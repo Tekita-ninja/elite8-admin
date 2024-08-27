@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.activeClassMenu {
+    transition: all ease-in-out 0.3s;
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px 2px 2px 2px;
+}
+.activeClassMenu .iconWrapper:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.activeClassMenu::before {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 25px;
+    background-color: #fff;
+    left: 0;
+    border-radius: 0 6px 6px 0;
+    transition: all ease-in-out 0.3s;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
+h1,
+h2,
+h3 {
+    font-family: "Barlow Condensed", sans-serif;
+}
+
+/* VUE EASY DATA TABLE */
+.custom-table {
+    --easy-table-border: none;
+    --easy-table-row-border: 1px solid #eee;
+
+    --easy-table-header-font-size: 14px;
+    --easy-table-header-height: 32px;
+    --easy-table-header-font-color: #fff;
+    --easy-table-header-background-color: #000;
+
+    --easy-table-header-item-padding: 10px 15px;
+
+    --easy-table-body-even-row-font-color: #000;
+    --easy-table-body-even-row-background-color: #f1f5f9;
+
+    --easy-table-body-row-font-color: #000;
+    --easy-table-body-row-background-color: #fff;
+    --easy-table-body-row-height: 32px;
+    --easy-table-body-row-font-size: 14px;
+
+    --easy-table-body-row-hover-font-color: #2d3a4f;
+    --easy-table-body-row-hover-background-color: #f1f5f9;
+
+    --easy-table-body-item-padding: 10px 15px;
+
+    --easy-table-footer-background-color: #fff;
+    --easy-table-footer-font-color: #000;
+    --easy-table-footer-font-size: 14px;
+    --easy-table-footer-padding: 0px 10px;
+    --easy-table-footer-height: 50px;
+
+    --easy-table-rows-per-page-selector-width: 70px;
+    --easy-table-rows-per-page-selector-option-padding: 10px;
+    --easy-table-rows-per-page-selector-z-index: 1;
+
+    --easy-table-scrollbar-track-color: #f8fafc;
+    --easy-table-scrollbar-color: #f8fafc;
+    --easy-table-scrollbar-thumb-color: #94a3b8;
+    --easy-table-scrollbar-corner-color: #f8fafc;
+
+    --easy-table-loading-mask-background-color: #f8fafc;
+}
+
+.custom-table .buttons-pagination {
+    display: flex;
+    gap: 5px;
+}
+.custom-table .buttons-pagination .item {
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 3px;
+    min-width: 30px !important;
+    background-color: #f1f5f9;
+}
+
+.custom-table .easy-data-table__rows-selector .rows-input__wrapper{
+  border: 1px solid #e2e8f0 !important;
+  padding: 15px 5px !important;
+  border-radius: 6px;
+}
+.custom-table .easy-data-table__rows-selector .select-items{
+  margin-top: 13px !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+    .custom-table .pagination__rows-per-page {
+        display: none !important;
+    }
+    .custom-table .pagination__items-index {
+        display: none !important;
+    }
+}
