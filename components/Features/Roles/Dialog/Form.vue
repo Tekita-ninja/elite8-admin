@@ -3,7 +3,7 @@ import { useRoleStore } from '@/app/stores/useRoleStore';
 import { formRoleSchema } from '@/app/validations/role';
 import { useForm } from 'vee-validate';
 import type { Item } from 'vue3-easy-data-table';
-const props = defineProps<{ item: Item }>()
+const props = defineProps<{ item?: Item }>()
 const controller = useRoleStore()
 const dialog = ref(false)
 const form = useForm({

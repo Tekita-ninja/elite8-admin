@@ -1,10 +1,10 @@
 <template>
   <ContainersPage title="users" subtitle="List of users">
     <template #actions>
-      <UiButton>New</UiButton>
+      <FeaturesUserDialogForm />
     </template>
     <div>
-      CONTENT HERE...
+      <FeaturesUserTable />
     </div>
   </ContainersPage>
 </template>

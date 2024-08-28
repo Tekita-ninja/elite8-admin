@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
-import { RoleModel, type TFormRole, type TResults } from "../models/RoleModel";
-import RoleService from "../services/RoleService";
-import type { TQueryParams } from "../types/Common";
 import { toast } from "vue-sonner";
-export const useRoleStore = defineStore("useRoleStore", {
+import { UserModel, type TFormEditUser, type TFormUser, type TResults } from "../models/UserModel";
+import UserService from "../services/UserService";
+import type { TQueryParams } from "../types/Common";
+export const useUserStore = defineStore("useUserStore", {
   state: () => ({
     dialog: false,
     loading: false,
@@ -14,19 +14,19 @@ export const useRoleStore = defineStore("useRoleStore", {
     async get(params?: TQueryParams) {
       try {
         this.loading = true
-        const response = await RoleService.get(params)
-        this.results = RoleModel.paginate(response)
+        const response = await UserService.get(params)
+        this.results = UserModel.paginate(response)
       } catch (error: any) {
         return error.response.data
       } finally {
         this.loading = false
       }
     },
-    async create(data: TFormRole) {
+    async create(data: TFormUser) {
       const common = useCommonStore()
       try {
         this.loading = true
-        const response = await RoleService.create(data)
+        const response = await UserService.create(data)
         if (response.status === 201) {
           await this.get(toQueryParams(common.$state.params))
           this.dialog = false
@@ -40,11 +40,11 @@ export const useRoleStore = defineStore("useRoleStore", {
         this.loading = false
       }
     },
-    async update(data: TFormRole,id:number) {
+    async update(data: TFormEditUser,id:number) {
       const common = useCommonStore()
       try {
         this.loading = true
-        const response = await RoleService.update(data,id)
+        const response = await UserService.update(data,id)
         if (response.status === 200) {
           await this.get(toQueryParams(common.$state.params))
           this.dialog = false
@@ -62,7 +62,7 @@ export const useRoleStore = defineStore("useRoleStore", {
       const common = useCommonStore()
       try {
         this.loading = true
-        const response = await RoleService.delete(id)
+        const response = await UserService.delete(id)
         if (response.status === 200) {
           await this.get(toQueryParams(common.$state.params))
           this.dialog = false
@@ -76,11 +76,11 @@ export const useRoleStore = defineStore("useRoleStore", {
         this.loading = false
       }
     },
-    async assignPermission(roleId: number, permissionIds:number[]) {
+    async assignRole(userId: number, roleId:number) {
       const common = useCommonStore()
       try {
         this.isSubmitting = true
-        const response = await RoleService.assignPermission(roleId,permissionIds)
+        const response = await UserService.assignRole(userId,roleId)
         if (response.status === 201) {
           await this.get(toQueryParams(common.$state.params))
           this.dialog = false

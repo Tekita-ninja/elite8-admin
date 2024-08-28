@@ -1,10 +1,10 @@
 <template>
   <ContainersPage title="permissions" subtitle="List of permissions">
     <template #actions>
-      <UiButton>New</UiButton>
+      <FeaturesPermissionsDialogForm />
     </template>
     <div>
-      CONTENT HERE...
+      <FeaturesPermissionsTable />
     </div>
   </ContainersPage>
 </template>

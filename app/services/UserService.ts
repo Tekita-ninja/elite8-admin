@@ -1,27 +1,28 @@
-import type { TFormRole } from "../models/RoleModel";
+
+import type { TFormEditUser, TFormUser } from "../models/UserModel";
 import type { TQueryParams } from "../types/Common";
 
-class RoleService {
+class UserService {
   api = useApi();
   async get(params?: TQueryParams) {
     const response = await this.api({
-      url: `roles`,
+      url: `users`,
       method: "GET",
       params
     });
     return response.data;
   }
-  async create(data: TFormRole) {
+  async create(data: TFormUser) {
     const response = await this.api({
-      url: `roles`,
+      url: `users`,
       method: "POST",
       data
     });
     return response;
   }
-  async update(data: TFormRole,id:number) {
+  async update(data: TFormEditUser,id:number) {
     const response = await this.api({
-      url: `roles/${id}`,
+      url: `users/${id}`,
       method: "PATCH",
       data
     });
@@ -29,22 +30,22 @@ class RoleService {
   }
   async delete(id: number) {
     const response = await this.api({
-      url: `roles/${id}`,
+      url: `users/${id}`,
       method: "DELETE",
     });
     return response;
   }
-  async assignPermission(roleId: number, permissionIds:number[]) {
+  async assignRole(userId: number, roleId: number) {
     const response = await this.api({
-      url: `roles/assign-permission`,
+      url: `users/asssign-role`,
       method: "POST",
       data: {
-        roleId,
-        permissionIds
+        userId,
+        roleId
       }
     });
     return response;
   }
 }
 
-export default new RoleService();
+export default new UserService();

@@ -20,40 +20,46 @@ export const useApi = () => {
       return response;
     },
     function (error) {
-      console.log({
-        error
-      })
-      // if (error.config.url !== "login") {
-      //   if (error.response.status === 401) {
-      //     const token = useCookie("token");
-      //     token.value = null;
-      //     localStorage.removeItem("c_user");
-      //     window.location.reload();
-      //   }
-      // }
-      // if (error.code === "ERR_NETWORK") {
-      //   document.querySelector("body")?.classList.add("with-network-error");
-      //   toast.error("Ups! Terjadi kesalahan", {
-      //     description: "Mungkin Sinyal atau Jaringan Anda Terputus!",
-      //   });
-      //   return;
-      // }
+      // IF LOGIN
+      if (error.config.url === "auth/signin") {
+        if (error.response.status === 401) {
+          console.log({
+            error:error.response.data
+          })
+          toast.error(error.response.data.error, {
+            description: error.response.data.message || 'Login failed',
+            position:"bottom-center"
+          })
+        }
+        return;
+      }
+      // IF LOGIN
 
-      // if (error.response.status === 504) {
-      //   toast.error(`Ups! Terjadi kesalahan`, {
-      //     description:
-      //       error.response.data.message || "Proses terputus silahkan coba beberapa saat lagi!",
-      //   });
-      //   return;
-      // }
-
-      // if (error.response.status === 500 || error.response.status > 400) {
-      //   toast.error(`Ups! Terjadi kesalahan`, {
-      //     description: error.response.data.message || "Internal server error!",
-      //   });
-      //   return;
-      // }
-      // return Promise.reject(error);
+      if (error.response.status === 401) {
+        // REFESH TOKE NANTI
+        const access_token = useCookie("access_token");
+        const refresh_token = useCookie("refresh_token");
+        access_token.value = null;
+        refresh_token.value = null;
+        localStorage.removeItem("permissions");
+        localStorage.removeItem("permissionGroups");
+        window.location.reload();
+      }else if (error.response.status === 403) {
+        // REFESH TOKE NANTI
+        const access_token = useCookie("access_token");
+        const refresh_token = useCookie("refresh_token");
+        access_token.value = null;
+        refresh_token.value = null;
+        localStorage.removeItem("permissions");
+        localStorage.removeItem("permissionGroups");
+        window.location.reload();
+      } else {
+        toast.error(error.response.data.error, {
+          description: error.response.data.message || 'Internal Server Error',
+          position: "bottom-center"
+        })
+      }
+      return Promise.reject(error);
     }
   );
   return axiosClient;

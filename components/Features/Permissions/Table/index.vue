@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { usePermissionStore } from '@/app/stores/usePermissionStore';
-import { useRoleStore } from '@/app/stores/useRoleStore';
 import type { ServerOptions } from 'vue3-easy-data-table';
 import { columns } from './colums';
 
 onMounted(() => initialData())
 
 const common = useCommonStore()
-const controller = useRoleStore()
-const permissionController = usePermissionStore()
+const controller = usePermissionStore()
 const options = ref<ServerOptions>(common.$state.params);
 function initialData() {
-  permissionController.getLists()
   common.changeParams(common.$state.params);
   controller.get(toQueryParams(common.$state.params))
 }
@@ -32,9 +29,8 @@ watch(options, async (value) => {
       :items="controller.results.data">
       <template #item-actions="item">
         <div class="flex gap-1">
-          <FeaturesRolesDialogDelete :item="item" />
-          <FeaturesRolesDialogForm :item="item" />
-          <FeaturesRolesDialogAssignPermission :item="item" />
+          <FeaturesPermissionsDialogDelete :item="item" />
+          <FeaturesPermissionsDialogForm :item="item" />
         </div>
       </template>
     </EasyDataTable>
