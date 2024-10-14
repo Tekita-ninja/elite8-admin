@@ -36,76 +36,47 @@ export const menus: TMenu[] = [
     ]
   },
   {
-    header: "super",
-    children: [
-      {
-        label: "Roles",
-        path: "/roles",
-        icon: 'carbon:rule-locked',
-        level: 1,
-      },
-      {
-        label: "Permissions",
-        path: "/permissions",
-        icon: 'lets-icons:key-alt-light',
-        level: 1,
-      },
-    ]
-  },
-  {
     header: "master",
     children: [
       {
-        label:"Masters",
-        path: "master",
-        icon: 'f7:square-grid-2x2',
+        label: "Users",
+        path: "/users",
+        icon: 'ph:users',
         level: 1,
-        children: [
-          {
-            label: "Categories",
-            path: '/master/category',
-            level: 2,
-          },
-          {
-            label: "Utils",
-            path: '/master/utils',
-            level: 2,
-            children: [
-              {
-                label: "Sizes",
-                path: '/master/utils/sizes',
-                level: 3,
-              },
-              {
-                label: "Colors",
-                path: '/master/utils/colors',
-                level: 3,
-              },
-            ]
-          },
-        ]
       },
       {
-        label: "Products",
-        path: "/products",
-        icon: 'solar:archive-broken',
+        label:"Custmers",
+        path: "customers",
+        icon: 'solar:user-id-bold',
         level: 1,
       }
     ]
   },
   {
-    header: "management",
+    header: "waitlist",
     children: [
       {
-        label: "Orders",
-        path: "/orders",
+        label: "Waitlist",
+        path: "/waitlist",
         icon: 'solar:clipboard-list-broken',
         level: 1,
       },
       {
-        label: "Incomes",
-        path: "/incomes",
-        icon: 'solar:document-add-outline',
+        label: "Playing",
+        path: "/playing",
+        icon: 'mdi:clipboard-text-play-outline',
+        level: 1,
+      },
+      {
+        label: "Removed",
+        path: "/removed",
+        icon: 'hugeicons:note-remove',
+        level: 1,
+      },
+      {
+        label: "Done",
+        path: "/complete",
+        icon: 'lucide:check-check',
         level: 1,
       },
     ]
@@ -114,41 +85,11 @@ export const menus: TMenu[] = [
     header: "setting",
     children: [
       {
-        label: "Users",
-        path: "users",
-        icon: 'mynaui:users-group',
+        label: "Utility",
+        path: "/utility",
+        icon: 'mingcute:settings-2-line',
         level: 1,
-        children: [
-          {
-            label: "Users",
-            path: "/users",
-            level: 2,
-          },
-          {
-            label: "Customers",
-            path: "/users/customers",
-            level: 2,
-          }
-        ]
-      },
-      {
-        label: "Payments",
-        path: "/payments",
-        icon: 'solar:card-broken',
-        level: 1,
-      },
-      {
-        label: "Couriers",
-        path: "/couriers",
-        icon: 'hugeicons:truck',
-        level: 1,
-      },
-      {
-        label: "Accounts",
-        path: "/accounts",
-        icon: 'hugeicons:account-setting-01',
-        level: 1,
-      },
+      }
     ]
   }
 ];

@@ -22,13 +22,13 @@ export const useApi = () => {
     function (error) {
       // IF LOGIN
       if (error.config.url === "auth/signin") {
-        if (error.response.status === 401) {
+        if (error.response.status === 400) {
           console.log({
-            error:error.response.data
+            error: error.response.data
           })
           toast.error(error.response.data.error, {
             description: error.response.data.message || 'Login failed',
-            position:"bottom-center"
+            position: "bottom-right"
           })
         }
         return;
@@ -44,7 +44,7 @@ export const useApi = () => {
         localStorage.removeItem("permissions");
         localStorage.removeItem("permissionGroups");
         window.location.reload();
-      }else if (error.response.status === 403) {
+      } else if (error.response.status === 403) {
         // REFESH TOKE NANTI
         const access_token = useCookie("access_token");
         const refresh_token = useCookie("refresh_token");

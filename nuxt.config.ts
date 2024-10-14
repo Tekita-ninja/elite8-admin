@@ -3,6 +3,23 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   ssr: false,
+  app: {
+    head: {
+      charset: "utf-8",
+      title: "Elite Eight",
+      viewport: "width=device-width, initial-scale=1",
+      meta: [
+        {
+          name: "robots",
+          content: "noindex",
+        },
+        {
+          name: "og:title",
+          content: "Elite Eight"
+        },
+      ],
+    },
+  },
   plugins: [
     "@/plugins/EasyDataTable"
   ],
