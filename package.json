@@ -20,6 +20,7 @@
     "axios": "^1.7.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dayjs-nuxt": "^2.1.11",
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
     "radix-vue": "^1.9.4",

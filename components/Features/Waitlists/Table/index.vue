@@ -25,19 +25,16 @@ watch(options, async (value) => {
 </script>
 <template>
   <div>
-    <EasyDataTable
-      v-bind="{...TableProps}"
-      v-model:server-options="options"
-      v-model:server-items-length="controller.results.meta.total"
-      v-if="controller.results.data"
-      :headers="columns"
-      :loading="controller.loading"
-      :items="controller.results.data">
+    <EasyDataTable show-index v-bind="{...TableProps}" v-model:server-options="options"
+      v-model:server-items-length="controller.results.meta.total" v-if="controller.results.data" :headers="columns"
+      :loading="controller.loading" :items="controller.results.data">
+      <template #item-code="item">
+        {{ queueCode(item.queueNumber,item.createdAt)  }}
+      </template>
       <template #item-actions="item">
         <div class="flex gap-1">
           <FeaturesWaitlistsDialogCall :item="item" />
           <FeaturesWaitlistsDialogPlay :item="item" />
-          <!-- <FeaturesWaitlistsDialogDelete :item="item" /> -->
           <FeaturesWaitlistsDialogRemove :item="item" />
         </div>
       </template>

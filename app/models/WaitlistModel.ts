@@ -5,6 +5,7 @@ export type TWaitlistItem = {
   id: string
   customerId: string
   queueNumber: number
+  number?: number
   numOfCall: number
   status: string
   createdAt: string

@@ -110,5 +110,24 @@ export const useWaitlistStore = defineStore("useWaitlistStore", {
         this.loading = false
       }
     },
+    async play(data: { queueId: string }) {
+      const common = useCommonStore()
+      try {
+        this.isCalling = true
+        const response = await WaitlistService.play(data)
+        if (response.status === 200) {
+          await this.get(toQueryParams(common.$state.params))
+          this.isCalling = false
+          toast.success('Success!', {
+            description: 'success to play call customer!'
+          })
+        }
+        return response;
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.loading = false
+      }
+    },
   },
 });

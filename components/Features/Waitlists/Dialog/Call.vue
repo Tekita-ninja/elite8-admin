@@ -1,33 +1,17 @@
 <script setup lang="ts">
-import { useWaitlistStore } from '@/app/stores/useWaitlistStore';
 import { messageWA } from '@/constants/message';
 import type { Item } from 'vue3-easy-data-table';
 const props = defineProps<{ item: Item }>()
 const dialog = ref(false)
-const controller = useWaitlistStore()
 const phone = ref('')
 async function handleClickCall(type: string) {
   if (type === 'WHATSAPP') {
-    const response = await controller.call({
-      queueId: props.item.id
-    })
-    if (response.status === 200) {
-      setTimeout(() => {
-        window.open(`https://api.whatsapp.com/send?phone=${phone.value}&${messageWA(props.item.customer.name)}`,'_blank')
-      },1000);
-      dialog.value = false
-    }
+    window.open(`https://api.whatsapp.com/send?phone=${phone.value}&${messageWA(props.item.customer.name)}`, '_blank')
+    dialog.value = false
   }
-  if(type==='CALL'){
-    const response = await controller.call({
-      queueId: props.item.id
-    })
-    if (response.status === 200) {
-      setTimeout(() => {
-        window.open(`tel:+${phone.value}`, '_blank')
-      }, 1000);
-      dialog.value = false
-    }
+  if (type === 'CALL') {
+    window.open(`tel:+${phone.value}`, '_blank')
+    dialog.value = false
   }
 }
 
@@ -63,7 +47,7 @@ function handleOpen() {
             <Icon class="w-5 h-5 mr-1" name="material-symbols:call" />
             Cellular Call
           </UiButton>
-          <UiButton @click="dialog===false" class="w-full" variant="outline">
+          <UiButton @click="dialog = false" class="w-full" variant="outline">
             Cancel
           </UiButton>
         </div>

@@ -1,4 +1,4 @@
-import type { TWailistForm } from "../models/WaitlistModel";
+import type { TWailistForm, TWaitlistItem } from "../models/WaitlistModel";
 import type { TQueryParams } from "../types/Common";
 
 class WaitlistService {
@@ -44,6 +44,14 @@ class WaitlistService {
   async call(data: { queueId: string }) {
     const response = await this.api({
       url: `queue-pools/call`,
+      method: "POST",
+      data:data
+    });
+    return response;
+  }
+  async play(data: { queueId: string }) {
+    const response = await this.api({
+      url: `queue-pools/play`,
       method: "POST",
       data:data
     });

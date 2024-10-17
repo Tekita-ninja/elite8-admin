@@ -78,7 +78,8 @@ async function handleOpen() {
               </UiSelect>
             </UiFormItem>
           </UiFormField>
-          <UiFormField v-slot="{ componentField }" name="queueNumber" :value="item?.queueNumber">
+          <!-- <pre>{{ controller.results.meta.total }}</pre> -->
+          <UiFormField v-slot="{ componentField }" name="queueNumber" :value="controller?.results?.meta?.total || 1">
             <UiFormItem>
               <UiFormLabel>Queue Number</UiFormLabel>
               <UiFormControl>

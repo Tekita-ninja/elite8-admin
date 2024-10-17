@@ -62,12 +62,6 @@ export const menus: TMenu[] = [
         level: 1,
       },
       {
-        label: "Playing",
-        path: "/playing",
-        icon: 'mdi:clipboard-text-play-outline',
-        level: 1,
-      },
-      {
         label: "Removed",
         path: "/removed",
         icon: 'hugeicons:note-remove',

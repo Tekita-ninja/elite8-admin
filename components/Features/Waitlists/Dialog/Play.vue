@@ -20,7 +20,9 @@ const controller = useWaitlistStore()
         </UiAlertDialogDescription>
       </UiAlertDialogHeader>
       <UiAlertDialogFooter>
-        <UiAlertDialogAction @click="controller.update({ status: 'PLAYING' }, item.id,)" class="bg-destructive">Continue
+        <UiAlertDialogAction @click="controller.play({
+          queueId: item.id
+        })" class="bg-destructive">Continue
         </UiAlertDialogAction>
         <UiAlertDialogCancel>Cancel</UiAlertDialogCancel>
       </UiAlertDialogFooter>

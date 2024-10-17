@@ -23,7 +23,14 @@ export default defineNuxtConfig({
   plugins: [
     "@/plugins/EasyDataTable"
   ],
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', 'nuxt-headlessui',"@pinia/nuxt"],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxt/icon',
+    'nuxt-headlessui',
+    "@pinia/nuxt",
+    "dayjs-nuxt"
+  ],
   shadcn: {
     /**
      * Prefix for all the imported component
