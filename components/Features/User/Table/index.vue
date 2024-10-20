@@ -37,21 +37,29 @@ function handleChangeStatus(state: boolean, item: Item) {
       v-model:server-items-length="controller.results.meta.total" v-if="controller.results.data" :headers="columns"
       :loading="controller.loading" :items="controller.results.data">
       <template #item-actions="item">
-        <FeaturesUserDialogDelete v-if="role.role === 'SUPER'" :item="item" />
-        <div v-else>
-          <UiButton size="icon-sm" variant="destructive" disabled>
-            <Icon name="tabler:trash" />
-          </UiButton>
+        <div class="flex items-center gap-1">
+          <div>
+            <FeaturesUserDialogDelete v-if="role.role === 'SUPER'" :item="item" />
+            <div v-else>
+              <UiButton size="icon-sm" variant="destructive" disabled>
+                <Icon name="tabler:trash" />
+              </UiButton>
+            </div>
+          </div>
+          <FeaturesUserDialogPassword v-if="role.role === 'SUPER'" :item="item" />
         </div>
+
       </template>
       <template #item-status="item">
-        <div class="flex items-center space-x-2" v-if="role.role === 'SUPER'">
-          <UiSwitch @update:checked="(e)=>handleChangeStatus(e,item)" :id="item.id" :checked="item.status" />
-          <UiLabel class="cursor-pointer" :for="item.id">{{ item.status ? 'Active':'Inacive' }}</UiLabel>
-        </div>
-        <div class="flex items-center space-x-2" v-else>
-          <UiSwitch disabled :id="item.id" :checked="item.status" />
-          <UiLabel class="cursor-pointer" :for="item.id">{{ item.status ? 'Active':'Inacive' }}</UiLabel>
+        <div class="flex items-center gap-1">
+          <div class="flex items-center space-x-2" v-if="role.role === 'SUPER'">
+            <UiSwitch @update:checked="(e) => handleChangeStatus(e, item)" :id="item.id" :checked="item.status" />
+            <UiLabel class="cursor-pointer" :for="item.id">{{ item.status ? 'Active' : 'Inacive' }}</UiLabel>
+          </div>
+          <div class="flex items-center space-x-2" v-else>
+            <UiSwitch disabled :id="item.id" :checked="item.status" />
+            <UiLabel class="cursor-pointer" :for="item.id">{{ item.status ? 'Active' : 'Inacive' }}</UiLabel>
+          </div>
         </div>
       </template>
     </EasyDataTable>

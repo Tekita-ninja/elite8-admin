@@ -56,7 +56,8 @@ async function handleOpen() {
               <UiFormLabel>Phone</UiFormLabel>
               <UiFormControl>
                 <!-- v-on:blur="onPhoneBlur" -->
-                <UiInput type="text" placeholder="phone" v-bind="componentField" />
+                <UiInput type="text" placeholder="phone" data-maska-tokens="9:[0-9]:repeated" v-maska
+                  data-maska="####-####-####-#" v-bind="componentField" />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>

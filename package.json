@@ -21,6 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dayjs-nuxt": "^2.1.11",
+    "maska": "^3.0.3",
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
     "radix-vue": "^1.9.4",

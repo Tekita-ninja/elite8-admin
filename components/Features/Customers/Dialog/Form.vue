@@ -11,10 +11,14 @@ const form = useForm({
 })
 
 const onSubmit = form.handleSubmit(async (values) => {
+  const newValue = {
+    ...values,
+    phone: values.phone.split("-").join("")
+  }
   if (props.item) {
-    await controller.update(values,props.item.id)
+    await controller.update(newValue,props.item.id)
   } else {
-    await controller.create(values)
+    await controller.create(newValue)
   }
   dialog.value = controller.dialog
 })
@@ -45,7 +49,8 @@ const onSubmit = form.handleSubmit(async (values) => {
             <UiFormItem>
               <UiFormLabel>Phone</UiFormLabel>
               <UiFormControl>
-                <UiInput type="text" placeholder="phone" v-bind="componentField" />
+                <UiInput type="text" data-maska-tokens="9:[0-9]:repeated"  v-maska
+                   data-maska="####-####-####-#" placeholder="phone" v-bind="componentField" />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>

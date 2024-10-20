@@ -33,6 +33,9 @@ watch(options, async (value) => {
       :headers="columns"
       :loading="controller.loading"
       :items="controller.results.data">
+      <template #item-phone="item">
+        {{ maskPhoneNumber(item.phone) }}
+      </template>
       <template #item-actions="item">
         <div class="flex gap-1">
           <FeaturesCustomersDialogDelete :item="item" />
