@@ -9,6 +9,7 @@ export type TUtility = {
 }
 type TSummaryItem = {
   label: string
+  path?: string
   count: number
 }
 export type TSummary = {

@@ -14,6 +14,8 @@ export type TWaitlistItem = {
 }
 
 export type TWailistForm = {
+  name?: string
+  phone?: string
   customerId?: string
   queueNumber?: number
   status?: string

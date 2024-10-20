@@ -11,7 +11,7 @@ export type TUser = {
 
 export type TFormUser = {
   name: string
-  email: string
+  username: string
   status?: boolean
   password: string
 }

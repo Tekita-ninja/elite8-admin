@@ -17,18 +17,6 @@ function handleLogout() {
     <UiDropdownMenuContent class="w-56 mr-2">
       <UiDropdownMenuLabel>My Account</UiDropdownMenuLabel>
       <UiDropdownMenuSeparator />
-      <UiDropdownMenuGroup>
-        <UiDropdownMenuItem>
-          <span>Profile</span>
-        </UiDropdownMenuItem>
-        <UiDropdownMenuItem>
-          <span>Settings</span>
-        </UiDropdownMenuItem>
-        <UiDropdownMenuItem>
-          <span>Credentials</span>
-        </UiDropdownMenuItem>
-      </UiDropdownMenuGroup>
-      <UiDropdownMenuSeparator />
       <UiDropdownMenuItem @click="handleLogout">
         <span>Logout</span>
         <UiDropdownMenuShortcut>

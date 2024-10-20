@@ -35,6 +35,7 @@ export const useUserStore = defineStore("useUserStore", {
           })
         }
       } catch (error: any) {
+        this.dialog = true
         return error.response.data
       } finally {
         this.loading = false

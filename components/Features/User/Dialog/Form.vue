@@ -8,9 +8,6 @@ const controller = useUserStore()
 const dialog = ref(false)
 const form = useForm({
   validationSchema: formUserSchema,
-  initialValues: {
-    password: '888999',
-  }
 })
 
 const onSubmit = form.handleSubmit(async (values) => {
@@ -44,11 +41,20 @@ const onSubmit = form.handleSubmit(async (values) => {
               <UiFormMessage />
             </UiFormItem>
           </UiFormField>
-          <UiFormField v-slot="{ componentField }" name="email" :value="item?.email">
+          <UiFormField v-slot="{ componentField }" name="username" :value="item?.username">
             <UiFormItem>
-              <UiFormLabel>Email</UiFormLabel>
+              <UiFormLabel>Username</UiFormLabel>
               <UiFormControl>
-                <UiInput type="email" placeholder="email" v-bind="componentField" />
+                <UiInput type="text" placeholder="username" v-bind="componentField" />
+              </UiFormControl>
+              <UiFormMessage />
+            </UiFormItem>
+          </UiFormField>
+          <UiFormField v-slot="{ componentField }" name="password" :value="item?.password">
+            <UiFormItem>
+              <UiFormLabel>Password</UiFormLabel>
+              <UiFormControl>
+                <UiInput type="text" placeholder="password" v-bind="componentField" />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>

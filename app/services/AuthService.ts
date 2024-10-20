@@ -17,6 +17,7 @@ class AuthService {
         refresh_token.value = response.data.refresh_token
         const permissions = response.data.user.permissions
         const permissionGroups = response.data.user.permissionGroups
+        localStorage.setItem('c_user', JSON.stringify(response.data.user))
         localStorage.setItem("permissions", JSON.stringify(permissions));
         localStorage.setItem("permissionGroups", JSON.stringify(permissionGroups));
         window.location.reload()

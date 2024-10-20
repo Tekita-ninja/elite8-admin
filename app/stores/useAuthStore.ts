@@ -12,6 +12,7 @@ type PermissionAllowed = {
 export const useAuthStore = defineStore("useAuthStore", {
   state: () => ({
     authenticated: false,
+    role: <string>{},
     loading: false,
     permissions: <any>{},
     permissionGroup: <any>{},
@@ -82,6 +83,10 @@ export const useAuthStore = defineStore("useAuthStore", {
         }
       })
       this.permissionAlloweds = listAllowedGrouped
+    },
+    getOwnRole() {
+      const user = JSON.parse(localStorage.getItem('c_user') || '');
+      this.role = user?.role
     }
   }
 });
