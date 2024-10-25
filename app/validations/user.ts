@@ -12,3 +12,8 @@ export const formUserPasswordSchema = toTypedSchema(z.object({
 export const formAssignRoleSchema = toTypedSchema(z.object({
   roleId: z.coerce.number({ message }),
 }))
+
+export const formEditUserSchema = toTypedSchema(z.object({
+  name: z.string({ message }),
+  username: z.string({ message }),
+}))

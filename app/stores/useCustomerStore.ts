@@ -7,6 +7,8 @@ export const useCustomerStore = defineStore("useCustomerStore", {
   state: () => ({
     dialog: false,
     loading: false,
+    isDeleting: false,
+    isExporting: false,
     results: <TResults>{},
     lists: <TCustomerItem[]>[],
     detail: <TCustomerItem>{},
@@ -32,6 +34,16 @@ export const useCustomerStore = defineStore("useCustomerStore", {
         return error.response.data
       } finally {
         this.loading = false
+      }
+    },
+    async export() {
+      try {
+        this.isExporting = true
+        await CustomerService.export()
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.isExporting = false
       }
     },
     async show(id: string) {
@@ -108,6 +120,24 @@ export const useCustomerStore = defineStore("useCustomerStore", {
         return error.response.data
       } finally {
         this.loading = false
+      }
+    },
+    async deleteMany(ids: string[]) {
+      const common = useCommonStore()
+      try {
+        this.isDeleting = true
+        const response = await CustomerService.deleteMany(ids)
+        if (response.status === 200) {
+          await this.get(toQueryParams(common.$state.params))
+          this.dialog = false
+          toast.success('Success!', {
+            description:'success delete data!'
+          })
+        }
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.isDeleting = false
       }
     },
   },

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/app/stores/useAuthStore';
+import { useProfileStore } from '@/app/stores/useProfileStore';
 const controller = useAuthStore()
+const profile = useProfileStore()
 function handleLogout() {
   controller.logoutUser()
 }
@@ -10,12 +12,18 @@ function handleLogout() {
   <UiDropdownMenu>
     <UiDropdownMenuTrigger as-child>
       <UiAvatar class="cursor-pointer p-1 w-8 h-8 md:h-10 md:w-10 border bg-white">
-        <UiAvatarImage src="/logo-sm.png" alt="user" />
-        <UiAvatarFallback class="font-semibold">SA</UiAvatarFallback>
+        <UiAvatarFallback class="font-semibold text-black uppercase text-lg">
+          {{ profile.profile?.username.slice(0,2) }}
+        </UiAvatarFallback>
       </UiAvatar>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent class="w-56 mr-2">
-      <UiDropdownMenuLabel>My Account</UiDropdownMenuLabel>
+      <UiDropdownMenuLabel>
+        <div>
+          <p class="capitalize">{{ profile.profile?.username }}</p>
+          <p class="text-[10px]">Role: {{ profile.profile?.role  }}</p>
+        </div>
+      </UiDropdownMenuLabel>
       <UiDropdownMenuSeparator />
       <UiDropdownMenuItem @click="handleLogout">
         <span>Logout</span>

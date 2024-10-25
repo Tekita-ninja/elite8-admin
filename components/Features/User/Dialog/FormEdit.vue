@@ -1,25 +1,17 @@
 <script setup lang="ts">
-import { useCustomerStore } from '@/app/stores/useCustomerStore';
-import { formCustomerSchema } from '@/app/validations/customer';
+import { useUserStore } from '@/app/stores/useUserStore';
+import { formEditUserSchema } from '@/app/validations/user';
 import { useForm } from 'vee-validate';
 import type { Item } from 'vue3-easy-data-table';
-const props = defineProps<{ item?: Item }>()
-const controller = useCustomerStore()
+const props = defineProps<{ item: Item }>()
+const controller = useUserStore()
 const dialog = ref(false)
 const form = useForm({
-  validationSchema: formCustomerSchema,
+  validationSchema: formEditUserSchema,
 })
 
 const onSubmit = form.handleSubmit(async (values) => {
-  const newValue = {
-    ...values,
-    phone: values.phone.split("-").join("")
-  }
-  if (props.item) {
-    await controller.update(newValue,props.item.id)
-  } else {
-    await controller.create(newValue)
-  }
+  await controller.update(values,props.item.id)
   dialog.value = controller.dialog
 })
 </script>
@@ -27,12 +19,11 @@ const onSubmit = form.handleSubmit(async (values) => {
 <template>
   <UiDialog v-model:open="dialog">
     <UiDialogTrigger as-child>
-      <ButtonsEdit v-if="item" />
-      <ButtonsCreate v-else />
+      <ButtonsEdit/>
     </UiDialogTrigger>
     <UiDialogContent class="max-w-lg">
       <UiDialogHeader>
-        <UiDialogTitle>Form Member</UiDialogTitle>
+        <UiDialogTitle>Form User</UiDialogTitle>
       </UiDialogHeader>
       <form @submit="onSubmit">
         <div class="space-y-3">
@@ -45,12 +36,11 @@ const onSubmit = form.handleSubmit(async (values) => {
               <UiFormMessage />
             </UiFormItem>
           </UiFormField>
-          <UiFormField v-slot="{ componentField }" name="phone" :value="item?.phone">
+          <UiFormField v-slot="{ componentField }" name="username" :value="item?.username">
             <UiFormItem>
-              <UiFormLabel>Phone</UiFormLabel>
+              <UiFormLabel>Username</UiFormLabel>
               <UiFormControl>
-                <UiInput type="text" data-maska-tokens="9:[0-9]:repeated"  v-maska
-                   data-maska="####-####-####-#" placeholder="phone" v-bind="componentField" />
+                <UiInput type="text" placeholder="username" v-bind="componentField" />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>

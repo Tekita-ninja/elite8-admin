@@ -4,7 +4,7 @@ const message = `please complete the field`;
 
 export const formWaitlistSchema = toTypedSchema(z.object({
   name: z.string({ message }),
-  phone: z.string({ message }),
+  phoneNumber: z.string({ message }),
   queueNumber: z.coerce.number({ message }),
 }))
 

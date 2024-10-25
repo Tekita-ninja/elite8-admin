@@ -48,14 +48,13 @@ async function handleOpen() {
       </UiDialogHeader>
       <form @submit="onSubmit">
         <div class="space-y-3">
-          <div
+          <!-- <div
             class="h-12 w-12 border flex items-center justify-center text-xl font-bold rounded-lg bg-black text-white">
-            {{ controller.lastNum + 1 }}</div>
-          <UiFormField v-slot="{ componentField }" name="phone" :value="item?.phone">
+            {{ controller.lastNum + 1 }}</div> -->
+          <UiFormField v-slot="{ componentField }" name="phoneNumber" :value="item?.phoneNumber">
             <UiFormItem>
               <UiFormLabel>Phone</UiFormLabel>
               <UiFormControl>
-                <!-- v-on:blur="onPhoneBlur" -->
                 <UiInput type="text" placeholder="phone" data-maska-tokens="9:[0-9]:repeated" v-maska
                   data-maska="####-####-####-#" v-bind="componentField" />
               </UiFormControl>

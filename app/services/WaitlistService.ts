@@ -26,7 +26,7 @@ class WaitlistService {
     });
     return response;
   }
-  async update(data: TWailistForm,id:string) {
+  async update(data: TWailistForm, id: string) {
     const response = await this.api({
       url: `queue-pools/${id}`,
       method: "PATCH",
@@ -45,7 +45,7 @@ class WaitlistService {
     const response = await this.api({
       url: `queue-pools/call`,
       method: "POST",
-      data:data
+      data: data
     });
     return response;
   }
@@ -53,7 +53,15 @@ class WaitlistService {
     const response = await this.api({
       url: `queue-pools/play`,
       method: "POST",
-      data:data
+      data: data
+    });
+    return response;
+  }
+  async removeMultiple(queueIds: number[]) {
+    const response = await this.api({
+      url: `queue-pools/remove-multiple`,
+      method: "POST",
+      data: { queueIds }
     });
     return response;
   }

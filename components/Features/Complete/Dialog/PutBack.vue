@@ -20,8 +20,8 @@ const onSubmit = form.handleSubmit(async (values) => {
 })
 
 async function handleOpen() {
-  form.setFieldValue('queueNumber', props.item.queueNumber)
   form.setFieldValue('numOfCall', 0)
+  form.setFieldValue('queueNumber', props.item.queueNumber)
   form.setFieldValue('status', "WAITING")
 }
 </script>
@@ -78,8 +78,8 @@ async function handleOpen() {
               </UiSelect>
             </UiFormItem>
           </UiFormField> -->
-          <!-- <pre>{{ controller.results.meta.total }}</pre> -->
-          <!-- :value="controller?.results?.meta?.total || 1" -->
+          <!-- <pre>{{ controller?.results?.meta.total }}</pre> -->
+          <!-- :value="controller?.results?.meta?.total + 1 || 1" -->
           <!-- <UiFormField v-slot="{ componentField }" name="queueNumber">
             <UiFormItem>
               <UiFormLabel>Queue Number</UiFormLabel>

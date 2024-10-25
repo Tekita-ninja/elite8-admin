@@ -9,6 +9,7 @@ export const useWaitlistStore = defineStore("useWaitlistStore", {
     dialog: false,
     loading: false,
     isCalling: false,
+    isRemoving: false,
     results: <TResults>{},
     lastNum: <number>0,
   }),
@@ -126,8 +127,28 @@ export const useWaitlistStore = defineStore("useWaitlistStore", {
       } catch (error: any) {
         return error.response.data
       } finally {
-        this.loading = false
+        this.isCalling = false
       }
     },
+
+    async removeMultiple(queueIds: number[]) {
+      const common = useCommonStore()
+      try {
+        this.isRemoving = true
+        const response = await WaitlistService.removeMultiple(queueIds)
+        if (response.status === 200) {
+          await this.get(toQueryParams(common.$state.params))
+          this.isRemoving = false
+          toast.success('Success!', {
+            description: 'success remove from wailist!'
+          })
+        }
+        return response;
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.loading = false
+      }
+    }
   },
 });

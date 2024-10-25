@@ -16,7 +16,7 @@ const controller = useWaitlistStore()
       <UiAlertDialogHeader>
         <UiAlertDialogTitle>Are you absolutely sure?</UiAlertDialogTitle>
         <UiAlertDialogDescription>
-          You will play the customer name <b>{{ item?.customer.name }}</b>
+          You will play the customer name <b>{{ item?.name }}</b>
         </UiAlertDialogDescription>
       </UiAlertDialogHeader>
       <UiAlertDialogFooter>
