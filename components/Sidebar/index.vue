@@ -29,9 +29,9 @@ onClickOutside(target, (_) => {
 
 <template>
   <aside ref="target" :class="cn(
-    'h-screen fixed md:sticky z-20 top-0 md:p-2',
+    'h-screen fixed lg:sticky z-20 top-0 md:p-2',
     'w-[300px] sm:w-[250px] transition',
-  stateMenu.isOpen ? '-translate-x-0' :'-translate-x-full md:-translate-x-0'
+  stateMenu.isOpen ? '-translate-x-0' :'-translate-x-full lg:-translate-x-0'
   )">
     <div class="bg-white h-full w-full flex flex-col md:rounded-xl overflow-x-hidden shadow-lg">
       <div class="h-16 flex flex-col justify-center px-2">

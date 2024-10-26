@@ -45,8 +45,8 @@ export const menus: TMenu[] = [
         level: 1,
       },
       {
-        label:"Members",
-        path: "members",
+        label:"Customers",
+        path: "customers",
         icon: 'solar:user-id-bold',
         level: 1,
       }
