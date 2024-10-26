@@ -34,7 +34,7 @@ const handleTriggerMenu = () => {
       </div>
       <div class="flex items-center gap-1">
         <NavbarProfileDropdown />
-        <div class="md:hidden">
+        <div class="lg:hidden">
           <button v-if="!stateMenu.isOpen" @click="handleTriggerMenu"
             class="h-8 w-8 flex items-center justify-center border rounded-full bg-white">
             <Icon class="w-5 h-5" name="ic:round-menu" />
