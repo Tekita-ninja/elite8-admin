@@ -33,12 +33,12 @@ function handleOpen() {
         <UiDialogTitle>Choose a type of call</UiDialogTitle>
       </UiDialogHeader>
       <div>
-        <div class="mb-4">
+        <!-- <div class="mb-4">
           <p>
             If you select one it will increase the number of calls. Calling <b>5</b> times will be
             considered removing from the queue
           </p>
-        </div>
+        </div> -->
         <div class="space-y-3">
           <UiButton @click="handleClickCall('WHATSAPP')" class="w-full" variant="outline">
             <Icon class="w-6 h-6 mr-1" name="logos:whatsapp-icon" />
