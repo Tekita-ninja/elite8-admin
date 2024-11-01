@@ -83,6 +83,12 @@ export const menus: TMenu[] = [
         path: "/utility",
         icon: 'mingcute:settings-2-line',
         level: 1,
+      },
+      {
+        label: "Banners",
+        path: "/banners",
+        icon: 'dashicons:images-alt2',
+        level: 1,
       }
     ]
   }
