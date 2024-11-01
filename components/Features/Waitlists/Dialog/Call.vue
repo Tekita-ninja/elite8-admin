@@ -6,7 +6,7 @@ const dialog = ref(false)
 const phone = ref('')
 async function handleClickCall(type: string) {
   if (type === 'WHATSAPP') {
-    window.open(`https://api.whatsapp.com/send?phone=${phone.value}&${messageWA(props.item.customer.name)}`, '_blank')
+    window.open(`https://api.whatsapp.com/send?phone=${phone.value}&${messageWA(props.item.name)}`, '_blank')
     dialog.value = false
   }
   if (type === 'CALL') {
@@ -16,7 +16,8 @@ async function handleClickCall(type: string) {
 }
 
 function handleOpen() {
-  phone.value = convertFormat(props.item.customer.phone)
+  console.log(props.item)
+  phone.value = convertFormat(props.item.phoneNumber)
 }
 </script>
 
