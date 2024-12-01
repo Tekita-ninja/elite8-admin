@@ -8,6 +8,8 @@ export type TWaitlistItem = {
   number?: number
   numOfCall: number
   status: string
+  tableNumber?: string
+  numOfPax: number
   createdAt: string
   updatedAt: string
   customer: TCustomerItem
@@ -18,6 +20,8 @@ export type TWailistForm = {
   phoneNumber?: string
   customerId?: string
   queueNumber?: number
+  tableNumber?: string
+  numOfPax: number
   status?: string
 }
 

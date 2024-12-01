@@ -21,6 +21,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 
 async function handleOpen() {
   form.setFieldValue('queueNumber', props.item.queueNumber)
+  form.setFieldValue('numOfPax', props.item.numOfPax)
   form.setFieldValue('numOfCall', 0)
   form.setFieldValue('status', "WAITING")
 }

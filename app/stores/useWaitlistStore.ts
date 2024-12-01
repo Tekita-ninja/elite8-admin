@@ -111,7 +111,7 @@ export const useWaitlistStore = defineStore("useWaitlistStore", {
         this.loading = false
       }
     },
-    async play(data: { queueId: string }) {
+    async play(data: { queueId?: number,tableNumber?:string }) {
       const common = useCommonStore()
       try {
         this.isCalling = true

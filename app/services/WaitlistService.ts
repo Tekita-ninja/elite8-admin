@@ -49,7 +49,7 @@ class WaitlistService {
     });
     return response;
   }
-  async play(data: { queueId: string }) {
+  async play(data: { queueId?: number,tableNumber?:string }) {
     const response = await this.api({
       url: `queue-pools/play`,
       method: "POST",

@@ -10,7 +10,8 @@ const form = useForm({
   validationSchema: formUpdateWaitlistSchema,
   initialValues: {
     status: "WAITING",
-    queueNumber: 0
+    queueNumber: 0,
+    numOfPax: props.item.numOfPax || 0
   }
 })
 
