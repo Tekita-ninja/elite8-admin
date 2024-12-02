@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useMenuStore } from '@/app/stores/useMenuStore';
 import { cn } from '@/lib/utils';
-
+const stateMenu = useMenuStore();
 defineProps<{
   label: string
   icon?: string
@@ -9,7 +10,7 @@ defineProps<{
 }>()
 </script>
 <template>
-  <NuxtLink :href="href" activeClass="activeClassMenu" :class="cn(
+  <NuxtLink @click="stateMenu.closeMenu()" :href="href" activeClass="activeClassMenu" :class="cn(
   'flex items-center gap-1 w-full text-start group  h-10 px-2',
       level === 2 && 'pl-9',
       level === 3 && 'pl-9',

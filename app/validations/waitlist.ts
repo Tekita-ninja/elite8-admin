@@ -18,5 +18,5 @@ export const formUpdateWaitlistSchema = toTypedSchema(z.object({
 
 export const formPlaySchema = toTypedSchema(z.object({
   queueId: z.coerce.number({ message }).optional(),
-  tableNumber: z.string({ message }).optional(),
+  tableNumber: z.string({ message }),
 }))

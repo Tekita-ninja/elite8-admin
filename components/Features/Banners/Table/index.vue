@@ -9,7 +9,10 @@ const common = useCommonStore()
 const controller = useBannerStore()
 const options = ref<ServerOptions>(common.$state.params);
 function initialData() {
-  controller.get(toQueryParams(common.$state.params))
+  controller.get(toQueryParams({
+    ...common.$state.params,
+    status:undefined
+  }))
 }
 watch(options, async (value) => {
   common.changeParams(value);
