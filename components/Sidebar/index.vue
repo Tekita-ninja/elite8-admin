@@ -74,7 +74,7 @@ onClickOutside(target, (_) => {
         </div>
       </div>
       <div class="h-16 p-2 flex flex-col justify-center bg-slate-100/50">
-        <div class="text-xs font-semibold">Elite Eight</div>
+        <div class="text-xs font-semibold">Tekita.tech</div>
         <div class="text-xs text-slate-500">Version 1.0.1</div>
       </div>
     </div>
