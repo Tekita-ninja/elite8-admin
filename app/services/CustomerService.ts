@@ -82,6 +82,17 @@ class CustomerService {
     });
     return response;
   }
+  async rolebackLastVisit(id: string) {
+    const response = await this.api({
+      url: `customers/claim-visit-benefit`,
+      method: "POST",
+      data: {
+        customerId: id,
+        count: 1
+      }
+    });
+    return response;
+  }
 }
 
 export default new CustomerService();

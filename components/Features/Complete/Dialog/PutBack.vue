@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useCustomerStore } from '@/app/stores/useCustomerStore';
 import { useWaitlistStore } from '@/app/stores/useWaitlistStore';
 import { formUpdateWaitlistSchema } from '@/app/validations/waitlist';
 import { useForm } from 'vee-validate';
 import type { Item } from 'vue3-easy-data-table';
 const props = defineProps<{ item: Item }>()
 const controller = useWaitlistStore()
+const customerController = useCustomerStore()
 const dialog = ref(false)
 const form = useForm({
   validationSchema: formUpdateWaitlistSchema,
@@ -16,6 +18,7 @@ const form = useForm({
 })
 
 const onSubmit = form.handleSubmit(async (values) => {
+  await customerController.rolebackVisitNumber(props.item.phoneNumber)
   await controller.update(values, props.item.id)
   dialog.value = controller.dialog
 })

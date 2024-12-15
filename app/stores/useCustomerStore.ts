@@ -140,5 +140,15 @@ export const useCustomerStore = defineStore("useCustomerStore", {
         this.isDeleting = false
       }
     },
+    async rolebackVisitNumber(phone:string) {
+      try {
+        const customer = await CustomerService.getByPhone(phone)
+        const customerId = customer.data.id
+        const response = CustomerService.rolebackLastVisit(customerId);
+        return response
+      } catch (error:any) {
+        return error.response.data
+      }
+    }
   },
 });

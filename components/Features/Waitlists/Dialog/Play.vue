@@ -8,13 +8,13 @@ const controller = useWaitlistStore()
 const dialog = ref(false)
 const form = useForm({
   validationSchema: formPlaySchema,
-  initialValues: {
-    queueId: props.item.id
-  }
 })
 
 const onSubmit = form.handleSubmit(async (values) => {
-  await controller.play(values)
+  await controller.play({
+    queueId: props.item.id,
+    tableNumber: values.tableNumber
+  })
   dialog.value = controller.dialog
 })
 </script>
@@ -31,6 +31,8 @@ const onSubmit = form.handleSubmit(async (values) => {
         <UiDialogTitle>Form Table</UiDialogTitle>
       </UiDialogHeader>
       <form @submit="onSubmit">
+        <pre>{{ item.id }}</pre>
+        <pre>{{ form.values }}</pre>
         <div class="space-y-3">
           <UiFormField v-slot="{ componentField }" name="tableNumber">
             <UiFormItem>
