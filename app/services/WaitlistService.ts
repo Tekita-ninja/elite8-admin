@@ -57,6 +57,14 @@ class WaitlistService {
     });
     return response;
   }
+  async roleback(data: { queueId?: number}) {
+    const response = await this.api({
+      url: `queue-pools/roleback`,
+      method: "POST",
+      data: data
+    });
+    return response;
+  }
   async removeMultiple(queueIds: number[]) {
     const response = await this.api({
       url: `queue-pools/remove-multiple`,

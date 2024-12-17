@@ -130,6 +130,25 @@ export const useWaitlistStore = defineStore("useWaitlistStore", {
         this.isCalling = false
       }
     },
+    async roleback(data: { queueId: number }) {
+      const common = useCommonStore()
+      try {
+        this.isCalling = true
+        const response = await WaitlistService.roleback(data)
+        if (response.status === 200) {
+          await this.get(toQueryParams(common.$state.params))
+          this.isCalling = false
+          toast.success('Success!', {
+            description: 'success to roleback call customer!'
+          })
+        }
+        return response;
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.isCalling = false
+      }
+    },
 
     async removeMultiple(queueIds: number[]) {
       const common = useCommonStore()

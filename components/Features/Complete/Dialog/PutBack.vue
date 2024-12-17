@@ -19,7 +19,9 @@ const form = useForm({
 
 const onSubmit = form.handleSubmit(async (values) => {
   await customerController.rolebackVisitNumber(props.item.phoneNumber)
-  await controller.update(values, props.item.id)
+  await controller.roleback({
+    queueId: props.item.id
+  })
   dialog.value = controller.dialog
 })
 
@@ -65,34 +67,6 @@ async function handleOpen() {
               <div class="flex-1">{{ item?.status }}</div>
             </div>
           </div>
-          <!-- <UiFormField v-slot="{ componentField }" name="customerId" :model-value="'WAITING'">
-            <UiFormItem>
-              <UiFormLabel>Select Status</UiFormLabel>
-              <UiSelect v-bind="componentField">
-                <UiSelectTrigger class="w-full">
-                  <UiSelectValue placeholder="Select a fruit" />
-                </UiSelectTrigger>
-                <UiSelectContent>
-                  <UiSelectGroup>
-                    <UiSelectLabel>status</UiSelectLabel>
-                    <UiSelectItem value="WAITING">WAITING</UiSelectItem>
-                    <UiSelectItem value="PLAYING">PLAYING</UiSelectItem>
-                  </UiSelectGroup>
-                </UiSelectContent>
-              </UiSelect>
-            </UiFormItem>
-          </UiFormField> -->
-          <!-- <pre>{{ controller?.results?.meta.total }}</pre> -->
-          <!-- :value="controller?.results?.meta?.total + 1 || 1" -->
-          <!-- <UiFormField v-slot="{ componentField }" name="queueNumber">
-            <UiFormItem>
-              <UiFormLabel>Queue Number</UiFormLabel>
-              <UiFormControl>
-                <UiInput type="number" placeholder="queueNumber" v-bind="componentField" />
-              </UiFormControl>
-              <UiFormMessage />
-            </UiFormItem>
-          </UiFormField> -->
         </div>
         <UiDialogFooter class="mt-4 flex justify-end">
           <UiButton type="submit">

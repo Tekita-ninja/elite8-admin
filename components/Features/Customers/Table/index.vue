@@ -32,7 +32,6 @@ function handleDeleteMany() {
 }
 </script>
 <template>
-  <!-- <pre>{{ controller.results }}</pre> -->
   <div>
     <div class="my-3" v-if="itemsSelected.length > 0 && profile?.profile?.role === 'SUPER'">
       <div class="flex justify-end">

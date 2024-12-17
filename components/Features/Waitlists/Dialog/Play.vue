@@ -31,8 +31,6 @@ const onSubmit = form.handleSubmit(async (values) => {
         <UiDialogTitle>Form Table</UiDialogTitle>
       </UiDialogHeader>
       <form @submit="onSubmit">
-        <pre>{{ item.id }}</pre>
-        <pre>{{ form.values }}</pre>
         <div class="space-y-3">
           <UiFormField v-slot="{ componentField }" name="tableNumber">
             <UiFormItem>
