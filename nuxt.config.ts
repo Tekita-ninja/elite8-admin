@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: "utf-8",
-      title: "Elite Eight",
+      title: "Tekita - Elite Eight",
       viewport: "width=device-width, initial-scale=1",
       meta: [
         {

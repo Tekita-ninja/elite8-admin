@@ -7,6 +7,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
+        success: 'bg-main-green text-black shadow hover:bg-main-green/90',
+        primary: 'bg-main text-white shadow hover:bg-main/90',
         default: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
@@ -27,7 +29,7 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       size: 'default',
     },
   },

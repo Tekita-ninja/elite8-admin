@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useWaitlistStore } from '@/app/stores/useWaitlistStore';
-import { formPlaySchema, formWaitlistSchema } from '@/app/validations/waitlist';
+import { formPlaySchema } from '@/app/validations/waitlist';
 import { useForm } from 'vee-validate';
 import type { Item } from 'vue3-easy-data-table';
 const props = defineProps<{ item: Item }>()
@@ -22,7 +22,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 <template>
   <UiDialog v-model:open="dialog">
     <UiDialogTrigger as-child>
-      <UiButton size="sm" variant="default">
+      <UiButton size="sm" variant="success">
         <Icon name="ci:check-all" class="mr-1" /> Done
       </UiButton>
     </UiDialogTrigger>

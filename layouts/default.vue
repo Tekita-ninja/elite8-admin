@@ -9,7 +9,7 @@ profile.getMyProfile()
     <Sidebar />
     <div class="w-full h-screen flex-1 overflow-auto">
       <Navbar />
-      <main class="p-2 md:p-0">
+      <main class="p-3">
         <slot />
       </main>
     </div>

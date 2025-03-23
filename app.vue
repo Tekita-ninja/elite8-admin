@@ -3,7 +3,7 @@
 import { Toaster } from 'vue-sonner'
 </script>
 <template>
-  <div class="bg-slate-100">
+  <div class="bg-blue-50">
     <Toaster richColors />
     <NuxtRouteAnnouncer />
     <NuxtLayout>

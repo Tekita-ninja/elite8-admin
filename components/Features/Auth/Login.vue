@@ -59,7 +59,8 @@ function togglePassword() {
           </UiFormItem>
         </UiFormField>
       </div>
-      <UiButton size="lg" type="submit" class="w-full mt-6">
+      <UiButton size="lg" type="submit" :disabled="controller.loading" class="w-full items-center mt-6">
+        <Icon v-if="controller.loading" class="animate-spin mr-2" name="nonicons:loading-16" />
         Login
       </UiButton>
     </form>

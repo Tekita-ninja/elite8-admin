@@ -30,7 +30,7 @@ export const menus: TMenu[] = [
       {
         label:"Dashboard",
         path: "/",
-        icon: 'ph:speedometer',
+        icon: 'ic:outline-dashboard',
         level: 1
       }
     ]
@@ -41,13 +41,13 @@ export const menus: TMenu[] = [
       {
         label: "Users",
         path: "/users",
-        icon: 'ph:users',
+        icon: 'ri:user-star-fill',
         level: 1,
       },
       {
         label:"Customers",
         path: "customers",
-        icon: 'solar:user-id-bold',
+        icon: 'fluent:people-team-20-filled',
         level: 1,
       }
     ]
@@ -58,36 +58,30 @@ export const menus: TMenu[] = [
       {
         label: "Waitlist",
         path: "/waitlist",
-        icon: 'solar:clipboard-list-broken',
+        icon: 'ri:list-ordered',
         level: 1,
       },
       {
         label: "Removed",
         path: "/removed",
-        icon: 'hugeicons:note-remove',
+        icon: 'ic:outline-close',
         level: 1,
       },
       {
         label: "Done",
         path: "/complete",
-        icon: 'lucide:check-check',
+        icon: 'tabler:checks',
         level: 1,
       },
     ]
   },
   {
-    header: "setting",
+    header: "settings",
     children: [
-      {
-        label: "Utility",
-        path: "/utility",
-        icon: 'mingcute:settings-2-line',
-        level: 1,
-      },
       {
         label: "Banners",
         path: "/banners",
-        icon: 'dashicons:images-alt2',
+        icon: 'bx:image-add',
         level: 1,
       }
     ]

@@ -16,7 +16,6 @@ async function handleClickCall(type: string) {
 }
 
 function handleOpen() {
-  console.log(props.item)
   phone.value = convertFormat(props.item.phoneNumber)
 }
 </script>

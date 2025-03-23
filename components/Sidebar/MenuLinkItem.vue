@@ -11,7 +11,7 @@ defineProps<{
 </script>
 <template>
   <NuxtLink @click="stateMenu.closeMenu()" :href="href" activeClass="activeClassMenu" :class="cn(
-  'flex items-center gap-1 w-full text-start group  h-10 px-2',
+  'flex items-center gap-1 w-full text-start group  h-9 px-2 rounded-[8px]',
       level === 2 && 'pl-9',
       level === 3 && 'pl-9',
     )">
