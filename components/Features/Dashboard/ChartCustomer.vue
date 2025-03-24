@@ -10,11 +10,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-
+import { useCustomerStore } from "@/app/stores/useCustomerStore";
+const customerController = useCustomerStore()
+await customerController.getVisitPerson({
+  start: '2022-11-01',
+  end: '2025-11-31'
+})
 const series = ref([
   {
-    name: "Revenue",
-    data: [10, 30, 45, 80, 50, 90, 120],
+    name: "Visitor",
+    data: customerController.stats.daily.map((obj:any) => Object.values(obj)[0]),
   },
 ]);
 const chartOptions = ref({
@@ -25,7 +30,8 @@ const chartOptions = ref({
   },
   xaxis: {
     show: true,
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    categories: customerController.stats.daily.map((obj: any) => Object.keys(obj)[0]),
+    type:"category",
     labels: {
       show: true,
     }

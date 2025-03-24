@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { toast } from "vue-sonner";
 import type { TQueryParams } from "../types/Common";
-import { CustomerModel, type TCustomerForm, type TCustomerItem, type TResults } from "../models/CustomerModel";
+import { CustomerModel, type TCustomerForm, type TCustomerItem, type TResults, type TVisitCount } from "../models/CustomerModel";
 import CustomerService from "../services/CustomerService";
 export const useCustomerStore = defineStore("useCustomerStore", {
   state: () => ({
@@ -12,6 +12,8 @@ export const useCustomerStore = defineStore("useCustomerStore", {
     results: <TResults>{},
     lists: <TCustomerItem[]>[],
     detail: <TCustomerItem>{},
+    tops: <TVisitCount[]>[],
+    stats:<any>{},
   }),
   actions: {
     async list() {
@@ -30,6 +32,28 @@ export const useCustomerStore = defineStore("useCustomerStore", {
         this.loading = true
         const response = await CustomerService.get(params)
         this.results = CustomerModel.paginate(response)
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.loading = false
+      }
+    },
+    async getTop(params?: {count:number}) {
+      try {
+        this.loading = true
+        const response = await CustomerService.getTop(params)
+        this.tops = response
+      } catch (error: any) {
+        return error.response.data
+      } finally {
+        this.loading = false
+      }
+    },
+    async getVisitPerson(params?: any) {
+      try {
+        this.loading = true
+        const response = await CustomerService.getVisitPerson(params)
+        this.stats = response
       } catch (error: any) {
         return error.response.data
       } finally {

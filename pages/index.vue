@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { useCustomerStore } from '@/app/stores/useCustomerStore';
 import { useUtilityStore } from '@/app/stores/useUtilityStore';
 
 const controller = useUtilityStore()
+const customerController = useCustomerStore()
 await controller.getSummary()
+await customerController.getTop({
+  count: 5
+})
 onMounted(() => initialData())
 async function initialData() {
 }
@@ -47,60 +52,18 @@ const items = mergedData.filter(i => i.label !== "Users")
               <h2 class="font-bold text-lg text-gray-800">TOP 5 CUSTOMER / MONTH</h2>
             </div>
             <div>
-              <div class="flex py-3">
-                <div class="w-5">1.</div>
+              <div class="flex py-3" v-for="(item, index) in customerController.tops" :key="item.id">
+                <div class="w-5">{{ index + 1 }}.</div>
                 <div class="flex-1">
-                  <h3 class="font-semibold line-clamp-1">Muhammad Rizky Alfarizqi Putra Wijayanto</h3>
+                  <h3 class="font-semibold line-clamp-1">
+                    {{ item.name }}
+                  </h3>
                   <div class="flex gap-1 items-center">
                     <Icon name="ic:outline-phone-in-talk" />
-                    <p class="text-sm">088888888881</p>
+                    <p class="text-sm">{{ item.phone }}</p>
                   </div>
                 </div>
-                <div class="w-20 text-end">10 Visit</div>
-              </div>
-              <div class="flex py-3">
-                <div class="w-5">2.</div>
-                <div class="flex-1">
-                  <h3 class="font-semibold line-clamp-1">Muhammad Rizky Alfarizqi Putra Wijayanto</h3>
-                  <div class="flex gap-1 items-center">
-                    <Icon name="ic:outline-phone-in-talk" />
-                    <p class="text-sm">088888888881</p>
-                  </div>
-                </div>
-                <div class="w-20 text-end">10 Visit</div>
-              </div>
-              <div class="flex py-3">
-                <div class="w-5">3.</div>
-                <div class="flex-1">
-                  <h3 class="font-semibold line-clamp-1">Muhammad Rizky Alfarizqi Putra Wijayanto</h3>
-                  <div class="flex gap-1 items-center">
-                    <Icon name="ic:outline-phone-in-talk" />
-                    <p class="text-sm">088888888881</p>
-                  </div>
-                </div>
-                <div class="w-20 text-end">10 Visit</div>
-              </div>
-              <div class="flex py-3">
-                <div class="w-5">4.</div>
-                <div class="flex-1">
-                  <h3 class="font-semibold line-clamp-1">Muhammad Rizky Alfarizqi Putra Wijayanto</h3>
-                  <div class="flex gap-1 items-center">
-                    <Icon name="ic:outline-phone-in-talk" />
-                    <p class="text-sm">088888888881</p>
-                  </div>
-                </div>
-                <div class="w-20 text-end">10 Visit</div>
-              </div>
-              <div class="flex py-3">
-                <div class="w-5">5.</div>
-                <div class="flex-1">
-                  <h3 class="font-semibold line-clamp-1">Muhammad Rizky Alfarizqi Putra Wijayanto</h3>
-                  <div class="flex gap-1 items-center">
-                    <Icon name="ic:outline-phone-in-talk" />
-                    <p class="text-sm">088888888881</p>
-                  </div>
-                </div>
-                <div class="w-20 text-end">10 Visit</div>
+                <div class="w-20 text-end">{{ item.countVisit }} Visit</div>
               </div>
             </div>
           </div>

@@ -9,6 +9,12 @@ export type TCustomerItem = {
   createdAt: string
   updatedAt: string
 }
+export type TVisitCount = {
+  id: string
+  name: string
+  phone: string
+  countVisit: number
+}
 
 export type TCustomerForm = {
   name: string

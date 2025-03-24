@@ -93,6 +93,22 @@ class CustomerService {
     });
     return response;
   }
+  async getTop(params?: {count:number}) {
+    const response = await this.api({
+      url: `customers/top-customers`,
+      method: "GET",
+      params
+    });
+    return response.data;
+  }
+  async getVisitPerson(params?: any) {
+    const response = await this.api({
+      url: `customers/stats`,
+      method: "GET",
+      params
+    });
+    return response.data;
+  }
 }
 
 export default new CustomerService();
