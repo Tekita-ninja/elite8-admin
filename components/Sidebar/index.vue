@@ -39,14 +39,14 @@ onClickOutside(target, (_) => {
     'w-[320px] sm:w-[270px] transition',
     stateMenu.isOpen ? '-translate-x-0' : '-translate-x-full lg:-translate-x-0'
   )">
-    <div class="bg-[#0036FA] text-white px-3 h-full w-full flex flex-col overflow-x-hidden shadow-lg">
+    <div class="bg-[#FFF] text-slate-800 px-3 h-full w-full flex flex-col overflow-x-hidden shadow-lg">
       <div class="h-[120px] flex flex-col justify-center px-2">
         <Logo />
       </div>
       <div class="h-full flex-1 text-sm overflow-y-auto">
         <div v-for="(menu, index) in menus" :key="index" class="space-y-4">
           <div class="mt-6">
-            <span class="px-3 text-[10px] font-medium text-blue-300 uppercase mb-1 -ml-3 block">{{ menu.header }}</span>
+            <span class="px-3 text-[10px] font-medium text-slate-400 uppercase mb-1 -ml-3 block">{{ menu.header }}</span>
             <div v-for="(menul1, index) in menu.children" :key="index">
               <template v-if="menul1.children?.length && menul1.children?.length > 0">
                 <HDisclosure :default-open="menul1.path === menuLevel1" v-slot="{ open }">
@@ -92,7 +92,7 @@ onClickOutside(target, (_) => {
         </div>
       </div>
       <div class="h-16 flex flex-col justify-center">
-        <div class="text-xs font-light text-blue-300">Copyright Tekita.tech {{ new Date().getFullYear() }} - Ver 1.0.1
+        <div class="text-xs font-light text-slate-500">Copyright <a class="font-semibold" href="https://tekita.tech" target="_blank" rel="noopener noreferrer">Tekita.tech</a> {{ new Date().getFullYear() }} - Ver 1.0.1
         </div>
       </div>
     </div>

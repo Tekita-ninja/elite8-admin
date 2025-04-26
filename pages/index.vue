@@ -24,7 +24,7 @@ const items = mergedData.filter(i => i.label !== "Users")
         <div class="flex w-full">
           <div class="flex-1">
             <p class="text-xs uppercase text-black/60">{{ item.label }}</p>
-            <h2 class="text-xl md:text-3xl font-bold text-main">{{ item.count }}</h2>
+            <h2 class="text-xl md:text-3xl font-bold">{{ item.count }}</h2>
           </div>
           <div class="flex items-start justify-center text-main">
             <Icon v-if="item.label === 'Customers'" class="w-8 h-8" name="ri:user-add-fill" />

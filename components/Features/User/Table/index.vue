@@ -39,12 +39,12 @@ function handleChangeStatus(state: boolean, item: Item) {
       v-model:server-items-length="controller.results.meta.total" v-if="controller.results.data" :headers="columns"
       :loading="controller.loading" :items="controller.results.data">
       <template #item-actions="item">
-        <div class="flex items-center gap-1">
+        <div class="flex items-center">
           <div class="flex items-center gap-1" v-if="profile.profile.role === 'SUPER'">
             <FeaturesUserDialogPassword v-if="item.id === profile.profile.sub" :item="item" />
             <FeaturesUserDialogFormEdit v-if="item.id === profile.profile.sub" :item="item" />
           </div>
-          <div v-else>
+          <div v-else class="flex items-center gap-1">
             <UiButton size="icon-sm" variant="destructive" disabled>
               <Icon name="tabler:trash" />
             </UiButton>
@@ -53,7 +53,10 @@ function handleChangeStatus(state: boolean, item: Item) {
             <FeaturesUserDialogPassword :item="item" />
             <FeaturesUserDialogFormEdit :item="item" />
           </div>
-          <FeaturesUserDialogDelete v-if="item.role !== 'SUPER'" :item="item" />
+          <div class="mx-1">
+            <FeaturesUserDialogDelete v-if="item.role !== 'SUPER'" :item="item" />
+
+          </div>
         </div>
       </template>
       <template #item-status="item">

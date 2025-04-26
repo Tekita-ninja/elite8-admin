@@ -3,6 +3,6 @@
 </script>
 <template>
   <div class="flex gap-2 items-center">
-    <img class="h-10" src="/logo/logo-white.png" alt="logo">
+    <img class="h-10" src="/logo/main.png" alt="logo">
   </div>
 </template>
