@@ -2,13 +2,13 @@
 .activeClassMenu {
     transition: all ease-in-out 0.3s;
     position: relative;
-    background-color: #A5E100;
-    color: #000;
+    background-color: #0036FA;
+    color: #FFF;
     border-radius: 8px;
 }
 .activeClassMenu .iconWrapper:hover {
-    background-color: #A5E100;
-    color: #000;
+    background-color: #0036FA;
+    color: #FFF;
 }
 body {
     font-family: "Roboto", sans-serif;
