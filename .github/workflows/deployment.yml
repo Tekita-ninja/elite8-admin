@@ -55,8 +55,8 @@ jobs:
               echo 'No dist directory found to back up'; \
             fi"
 
-      # - name: Sync dist with remote server
-      #   run: |
-      #     rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/home/ryzen/Service/elite8/admin/dist/
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.TEKITA_SSH_PRIVATE_KEY }}
+      - name: Sync dist with remote server
+        run: |
+          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/home/ryzen/Service/elite8/admin/dist/
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.TEKITA_SSH_PRIVATE_KEY }}
