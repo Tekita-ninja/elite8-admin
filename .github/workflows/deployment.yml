@@ -1,0 +1,61 @@
+name: Deploy admin
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: copy env
+        run: |
+          echo "VITE_BASE_URL=https://elite8.be.tekita.tech" >> .env
+          echo "VITE_ALGORITHM=aes-256-cbc" >> .env
+          echo "VITE_CRYPTO_SECRET_KEY=6d4c6d75567a676f6a724c576b5355714c586d74487347334d684d324f314b6a" >> .env
+          echo "VITE_CRYPTO_IV_KEY=3a3b1d1a39567871344951204a426150" >> .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run generate
+        run: npm run generate
+      
+      - name: Setup SSH
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.TEKITA_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.TEKITA_REMOTE_SERVER }} >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }} "echo 'Connection successful!'"
+
+      - name: Backup remote dist directory
+        run: |
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }} "\
+            cd ${{ secrets.PROJECT_PATH }} && \
+            if [ -d dist ]; then \
+              [ -f dist_backup.zip ] && rm dist_backup.zip; \
+              zip -r dist_backup.zip dist && echo 'Backup created as dist_backup.zip'; \
+            else \
+              echo 'No dist directory found to back up'; \
+            fi"
+
+      - name: Sync dist with remote server
+        run: |
+          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/home/ryzen/Service/elite8/admin/dist/
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.TEKITA_SSH_PRIVATE_KEY }}
