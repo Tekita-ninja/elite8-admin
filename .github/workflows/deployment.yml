@@ -56,6 +56,6 @@ jobs:
 
       - name: Sync dist with remote server
         run: |
-          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}
+          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/dist/
         env:
           SSH_PRIVATE_KEY: ${{ secrets.TEKITA_SSH_PRIVATE_KEY }}
