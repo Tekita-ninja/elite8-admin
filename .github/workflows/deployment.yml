@@ -56,6 +56,6 @@ jobs:
 
       - name: Sync dist with remote server
         run: |
-          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/home/ryzen/Service/elite8/admin/dist/
+          rsync -avz ./dist/ ${{ secrets.TEKITA_SSH_USER }}@${{ secrets.TEKITA_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}
         env:
           SSH_PRIVATE_KEY: ${{ secrets.TEKITA_SSH_PRIVATE_KEY }}
