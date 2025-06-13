@@ -1,4 +1,4 @@
-name: Deploy admin
+name: Deploy admin [STG]
 
 on:
   push:
