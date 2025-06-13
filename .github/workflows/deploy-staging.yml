@@ -46,7 +46,7 @@ jobs:
       - name: Backup remote dist directory
         run: |
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.TEKITA_STG_SSH_USER }}@${{ secrets.TEKITA_STG_REMOTE_SERVER }} "\
-            cd ${{ secrets.PROJECT_PATH }} && \
+            cd ${{ secrets.STG_PROJECT_PATH }} && \
             if [ -d dist ]; then \
               [ -f dist_backup.zip ] && rm dist_backup.zip; \
               zip -r dist_backup.zip dist && echo 'Backup created as dist_backup.zip'; \
@@ -56,6 +56,6 @@ jobs:
 
       - name: Sync dist with remote server
         run: |
-          rsync -avz ./dist/ ${{ secrets.TEKITA_STG_SSH_USER }}@${{ secrets.TEKITA_STG_REMOTE_SERVER }}:${{ secrets.PROJECT_PATH }}/dist/
+          rsync -avz ./dist/ ${{ secrets.TEKITA_STG_SSH_USER }}@${{ secrets.TEKITA_STG_REMOTE_SERVER }}:${{ secrets.STG_PROJECT_PATH }}/dist/
         env:
           SSH_PRIVATE_KEY: ${{ secrets.TEKITA_STG_SSH_PRIVATE_KEY }}
